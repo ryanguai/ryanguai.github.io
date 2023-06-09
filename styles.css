@@ -102,10 +102,57 @@ header {
   }
   
   .writing {
-    background-color: #f4f4f4;
     padding: 20px;
     margin-bottom: 20px;
+    text-align: center; /* Center the content horizontally */
   }
+  
+  .writing h3 {
+    font-size: 24px; /* Increase the font size of the titles */
+    margin-bottom: 10px; /* Add some space below the titles */
+  }
+  
+  .writing .article {
+    position: relative; /* Enable relative positioning for the article container */
+    display: flex; /* Use flexbox for centering the image and navigation */
+    align-items: center; /* Center the content vertically */
+    justify-content: center; /* Center the content horizontally */
+    margin-bottom: 10px; /* Add some space below the image and navigation */
+  }
+  
+  .writing img {
+    max-width: 100%; /* Ensure the image doesn't exceed its container */
+  }
+  
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100px; /* Increase the arrow width */
+    height: 100px; /* Increase the arrow height */
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .arrow-left {
+    left: 200px; /* Adjust the left position to move the arrow closer to the image */
+  }
+  
+  .arrow-right {
+    right: 200px; /* Adjust the right position to move the arrow closer to the image */
+  }
+  
+  .arrow:hover {
+    opacity: 1;
+  }
+  
+  
+  
+  
+  
   
   footer {
     padding: 10px;
