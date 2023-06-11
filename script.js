@@ -39,19 +39,6 @@ document.addEventListener('DOMContentLoaded', function() {
   
 
   document.addEventListener('DOMContentLoaded', function() {
-    const articles = [
-      {
-        image: 'socl22.jpg',
-        description: 'School of Christian Leadership 2022: Called & Set Apart',
-        path: 'socl22.html'
-      },
-      {
-        image: 'socl23.jpg',
-        description: 'School of Christian Leadership 2023'
-      }
-      // Add more articles as needed
-    ];
-  
     let currentIndex = 0; // Initialize the current article index
   
     const articleImage = document.getElementById('article-image');
@@ -59,6 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const articlePath = document.getElementById('article-path');
     const arrowLeft = document.querySelector('.arrow-left');
     const arrowRight = document.querySelector('.arrow-right');
+  
+    let articles; // Declare the articles variable
   
     // Function to update the current article
     function updateArticle() {
@@ -81,7 +70,20 @@ document.addEventListener('DOMContentLoaded', function() {
       updateArticle();
     });
   
-    // Initial update to display the first article
-    updateArticle();
+    // Fetch the article data from the JSON file
+    fetch('articles.json')
+      .then(response => response.json())
+      .then(data => {
+        // Store the fetched article data in the articles variable
+        articles = data;
+        // Initial update to display the first article
+        updateArticle();
+      })
+      .catch(error => {
+        console.log('Error fetching article data:', error);
+      });
   });
+  
+  
+    
   
