@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
   document.addEventListener('DOMContentLoaded', function() {
     let currentIndex = 0; // Initialize the current article index
   
+    const sectionTitle = document.getElementById('section-title');
     const articleImage = document.getElementById('article-image');
     const articleDescription = document.getElementById('article-description');
     const articlePath = document.getElementById('article-path');
@@ -48,15 +49,51 @@ document.addEventListener('DOMContentLoaded', function() {
     const arrowRight = document.querySelector('.arrow-right');
   
     let articles; // Declare the articles variable
+    let currSectionTitle = "faith";
   
     // Function to update the current article
     function updateArticle() {
+      sectionTitle.textContent = "{ " + currSectionTitle + " }";
       const currentArticle = articles[currentIndex];
-      articleImage.src = currentArticle.image;
+      articleImage.src = currentArticle.imagePath;
       articleImage.alt = `Writing ${currentIndex + 1}`;
       articleDescription.textContent = currentArticle.description;
       articlePath.href = currentArticle.path;
     }
+
+    button1.addEventListener('click', function() {
+      currSectionTitle = 'faith';
+         // Fetch the section data from the JSON file
+    fetch('sections.json')
+    .then(response => response.json())
+    .then(data => {
+      // Store the fetched article data in the articles variable
+      articles = data[currSectionTitle].articles;
+      // Initial update to display the first article
+      updateArticle();
+    })
+    .catch(error => {
+      console.log('Error fetching article data:', error);
+    });
+      updateArticle();
+    });
+  
+    button2.addEventListener('click', function() {
+      currSectionTitle = 'travel';
+         // Fetch the section data from the JSON file
+    fetch('sections.json')
+    .then(response => response.json())
+    .then(data => {
+      // Store the fetched article data in the articles variable
+      articles = data[currSectionTitle].articles;
+      // Initial update to display the first article
+      updateArticle();
+    })
+    .catch(error => {
+      console.log('Error fetching article data:', error);
+    });
+      updateArticle();
+    });
   
     // Event listener for the left arrow
     arrowLeft.addEventListener('click', function() {
@@ -70,12 +107,12 @@ document.addEventListener('DOMContentLoaded', function() {
       updateArticle();
     });
   
-    // Fetch the article data from the JSON file
-    fetch('articles.json')
+    // Fetch the section data from the JSON file
+    fetch('sections.json')
       .then(response => response.json())
       .then(data => {
         // Store the fetched article data in the articles variable
-        articles = data;
+        articles = data["faith"].articles;
         // Initial update to display the first article
         updateArticle();
       })

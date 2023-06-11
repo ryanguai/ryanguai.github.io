@@ -1,0 +1,33 @@
+{
+    "faith": {
+      "title": "{ faith }",
+      "articles": [
+        {
+          "imagePath": "socl22.jpg",
+          "description": "School of Christian Leadership 2022: Called & Set Apart",
+          "path": "socl22.html"
+        },
+        {
+            "imagePath": "socl23.jpg",
+            "description": "School of Christian Leadership 2023",
+            "path": "socl23.html"
+          }
+      ]
+    },
+    "travel": {
+      "title": "{ travel }",
+      "articles": [
+        {
+          "imagePath": "travel1.jpg",
+          "description": "Travel Adventure 1",
+          "path": "travel1.html"
+        },
+        {
+          "imagePath": "travel2.jpg",
+          "description": "Travel Adventure 2",
+          "path": "travel2.html"
+        }
+      ]
+    }
+  }
+  
