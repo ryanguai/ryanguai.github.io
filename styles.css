@@ -72,9 +72,14 @@ header {
   }
   
   section {
+    margin-top: 10px;
     margin-bottom: 40px;
     display: flex;
     align-items: center;
+  }
+
+  #section-title {
+    margin: 20px;
   }
 
   .image-container {
@@ -153,6 +158,11 @@ header {
   #button-container {
     display: flex;
     justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    padding: 10px;
+    max-width: fit-content;
+    margin: 0 auto;
   }
   
   
@@ -189,3 +199,17 @@ textarea {
   height: 150px; /* Adjust the height as needed */
 }
   
+button {
+  padding: 10px;
+  color: #333333;
+  cursor: pointer;
+  margin: 0 10px;
+  border: none;
+  background-color: transparent;
+}
+
+button i {
+  font-size: 24px; /* Increase the font size to make the icon bigger */
+}
+
+
