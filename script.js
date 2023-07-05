@@ -120,7 +120,43 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Error fetching article data:', error);
       });
   });
+
+  let currentTab = 'faith';
   
+  // Function to update the active tab styling
+function updateActiveTab() {
+  const button1 = document.getElementById('button1');
+  const button2 = document.getElementById('button2');
+
+  // Remove the active class from both buttons
+  button1.classList.remove('active');
+  button2.classList.remove('active');
+
+  // Add the active class to the corresponding button based on the currentTab value
+  if (currentTab === 'faith') {
+    button1.classList.add('active');
+  } else if (currentTab === 'travel') {
+    button2.classList.add('active');
+  }
+}
+
+// Event listener for the "Faith" button
+document.getElementById('button1').addEventListener('click', function() {
+  currentTab = 'faith';
+  updateActiveTab();
+  // Additional actions or logic specific to the "Faith" tab
+});
+
+// Event listener for the "Travel" button
+document.getElementById('button2').addEventListener('click', function() {
+  currentTab = 'travel';
+  updateActiveTab();
+  // Additional actions or logic specific to the "Travel" tab
+});
+
+// Initial update of the active tab styling
+updateActiveTab();
+
   
     
   
