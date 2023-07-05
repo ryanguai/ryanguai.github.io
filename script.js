@@ -1,45 +1,7 @@
-// script.js
-document.addEventListener('DOMContentLoaded', function() {
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('.content');
-    
-    // Hide all sections except the "Home" section
-    sections.forEach(function(section) {
-      if (section.id !== 'home') {
-        section.style.display = 'none';
-      }
-    });
-  
-    navLinks.forEach(function(link) {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const sectionId = link.getAttribute('data-section');
-        const targetSection = document.getElementById(sectionId);
-        
-        sections.forEach(function(section) {
-            if (section === targetSection) {
-              // Skip applying 'none' display to the target section
-              return;
-            }
-            section.style.display = 'none';
-            if (targetSection.id !== 'home') {
-                targetSection.style.display = 'block';
-            } else {
-                targetSection.style.display = 'flex';
-            }
-          });
-
-    
-       
-
-      });
-    });
-  });
-  
-
   document.addEventListener('DOMContentLoaded', function() {
     let currentIndex = 0; // Initialize the current article index
+      // Retrieve the selected value from localStorage if available
+    const selectedValue = localStorage.getItem('selectedValue');
   
     const sectionTitle = document.getElementById('section-title');
     const articleImage = document.getElementById('article-image');
@@ -49,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const arrowRight = document.querySelector('.arrow-right');
   
     let articles; // Declare the articles variable
-    let currSectionTitle = "faith";
+    let currSectionTitle = selectedValue;
   
     // Function to update the current article
     function updateArticle() {
@@ -112,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
       .then(response => response.json())
       .then(data => {
         // Store the fetched article data in the articles variable
-        articles = data["faith"].articles;
+        articles = data[currSectionTitle].articles;
         // Initial update to display the first article
         updateArticle();
       })
@@ -131,6 +93,9 @@ function updateActiveTab() {
   // Remove the active class from both buttons
   button1.classList.remove('active');
   button2.classList.remove('active');
+  // Retrieve the selected value from localStorage if available
+  const selectedValue = localStorage.getItem('selectedValue');  
+  currentTab = selectedValue;
 
   // Add the active class to the corresponding button based on the currentTab value
   if (currentTab === 'faith') {
@@ -143,6 +108,7 @@ function updateActiveTab() {
 // Event listener for the "Faith" button
 document.getElementById('button1').addEventListener('click', function() {
   currentTab = 'faith';
+  localStorage.setItem('selectedValue', currentTab);
   updateActiveTab();
   // Additional actions or logic specific to the "Faith" tab
 });
@@ -150,12 +116,14 @@ document.getElementById('button1').addEventListener('click', function() {
 // Event listener for the "Travel" button
 document.getElementById('button2').addEventListener('click', function() {
   currentTab = 'travel';
+  localStorage.setItem('selectedValue', currentTab);
   updateActiveTab();
   // Additional actions or logic specific to the "Travel" tab
 });
 
 // Initial update of the active tab styling
 updateActiveTab();
+
 
   
     

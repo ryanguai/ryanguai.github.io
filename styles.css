@@ -106,35 +106,47 @@ header {
     margin: 0;
   }
   
-  .writing {
+  #writing {
     padding: 20px;
     margin-bottom: 20px;
-    text-align: center; /* Center the content horizontally */
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
   
   .writing h3 {
-    font-size: 24px; /* Increase the font size of the titles */
-    margin-bottom: 10px; /* Add some space below the titles */
+    font-size: 24px;
+    margin-bottom: 10px;
   }
   
   .writing .article {
-    position: relative; /* Enable relative positioning for the article container */
-    display: flex; /* Use flexbox for centering the image and navigation */
-    align-items: center; /* Center the content vertically */
-    justify-content: center; /* Center the content horizontally */
-    margin-bottom: 10px; /* Add some space below the image and navigation */
+    position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
   }
   
   .writing img {
-    max-width: 100%; /* Ensure the image doesn't exceed its container */
+    max-width: 100%;
+    width: 700px;
+    height: 500px;
+  }
+
+  @media (max-width: 700px) {
+    .writing img {
+      width: 100%;
+      height: auto;
+    }
   }
   
   .arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 100px; /* Increase the arrow width */
-    height: 100px; /* Increase the arrow height */
+    width: 100px;
+    height: 100px;
     background-repeat: no-repeat;
     background-size: contain;
     cursor: pointer;
@@ -143,17 +155,16 @@ header {
   }
   
   .arrow-left {
-    left: 200px; /* Adjust the left position to move the arrow closer to the image */
+    left: 20px;
   }
   
   .arrow-right {
-    right: 200px; /* Adjust the right position to move the arrow closer to the image */
+    right: 20px;
   }
   
   .arrow:hover {
     opacity: 1;
   }
-  
   
   #button-container {
     display: flex;
@@ -164,6 +175,7 @@ header {
     max-width: fit-content;
     margin: 0 auto;
   }
+  
   
   
   footer {
@@ -245,6 +257,10 @@ button i {
 
 .social-icons a:hover {
   color: #007bff;
+}
+
+#contact {
+  display: block;
 }
 
 
