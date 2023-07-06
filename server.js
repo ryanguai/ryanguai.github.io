@@ -1,36 +1,25 @@
 const express = require('express');
-const mongodb = require('mongodb');
+const bodyParser = require('body-parser');
 
 const app = express();
 
-// Route for sign-up
-app.post('/signup', (req, res) => {
-    // Implement sign-up logic here
-    res.send('Sign-up route');
-  });
-  
-  // Route for login
-  app.post('/login', (req, res) => {
-    // Implement login logic here
-    res.send('Login route');
-  });
-  
+// Parse incoming request bodies
+app.use(bodyParser.urlencoded({ extended: false }));
 
-  const MongoClient = mongodb.MongoClient;
-const mongoURL = 'mongodb://localhost:27017/mydatabase'; // Replace with your MongoDB connection URL
+// Handle form submission
+app.post('/submit', (req, res) => {
+  const name = req.body.name;
+  const email = req.body.email;
+  const message = req.body.message;
 
-MongoClient.connect(mongoURL, (err, client) => {
-  if (err) {
-    console.error('Error connecting to the database:', err);
-    return;
-  }
+  // Process the form data (e.g., store in database, send email, etc.)
 
-  console.log('Connected to the database');
+  // Send a response
+  res.send('Form submitted successfully');
+});
 
-  // Additional code for interacting with the database can be placed here
-
-  // Start the server
-  app.listen(3000, () => {
-    console.log('Server started on port 3000');
-  });
+// Start the server
+const port = 3000;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });

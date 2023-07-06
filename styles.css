@@ -79,7 +79,7 @@ header {
   }
 
   #section-title {
-    margin: 20px;
+    margin: 40px;
   }
 
   .image-container {
@@ -176,40 +176,11 @@ header {
     margin: 0 auto;
   }
   
-  
-  
   footer {
     padding: 10px;
     text-align: center;
     margin-top: auto;
   }
-
-  .form-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-  }
-  
-  label {
-    margin-bottom: 5px;
-  }
-  
-  input[type="text"],
-input[type="email"] {
-  width: 300px;
-}
-
-textarea {
-  width: 100%;
-  height: 150px; /* Adjust the height as needed */
-}
   
 button {
   padding: 10px;

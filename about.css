@@ -1,0 +1,40 @@
+.technology-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .technology-group h2 {
+    width: 100%;
+    text-align: center;
+    margin: 30px;
+    font-size: 25px;
+  }
+  
+  .technology-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 80px; /* Adjust the width as needed */
+    height: 80px; /* Adjust the height as needed */
+    margin: 40px 140px 40px 140px;
+    /* Add additional styling as needed */
+  }
+
+  #frontend {
+    margin: 40px 60px 40px 60px;
+  }
+  
+  .technology-icon img {
+    width: auto; /* Adjust the desired width */
+    height: 100px; /* Automatically adjust the height */
+    margin: 20px;
+  }
+  
+  #about {
+    display: flex;
+    flex-direction: column;
+  }
+
