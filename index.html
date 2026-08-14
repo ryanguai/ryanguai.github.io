@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ryan Guai — AI/ML Engineer</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
     <meta name="description" content="Applied AI/ML Engineer. Portfolio featuring production-grade RAG systems with evaluation rigor.">
     <meta property="og:title" content="Ryan Guai — AI/ML Engineer">
     <meta property="og:description" content="Applied AI/ML Engineer building production-grade ML systems. Focused on retrieval, evaluation, and shipping things that work.">
@@ -24,6 +25,7 @@
             --code-bg: #f5f5f5;
             --tag-bg: #eef2ff;
             --tag-text: #3b52a8;
+            --nav-bg: rgba(250, 250, 250, 0.85);
         }
 
         @media (prefers-color-scheme: dark) {
@@ -38,6 +40,7 @@
                 --code-bg: #1e1e1e;
                 --tag-bg: #1e293b;
                 --tag-text: #93c5fd;
+                --nav-bg: rgba(15, 15, 15, 0.85);
             }
         }
 
@@ -50,11 +53,46 @@
             line-height: 1.7;
             max-width: 740px;
             margin: 0 auto;
-            padding: 3rem 1.5rem 2rem;
+            padding: 4.5rem 1.5rem 2rem;
         }
 
         a { color: var(--accent); text-decoration: none; }
         a:hover { color: var(--accent-hover); text-decoration: underline; }
+
+        /* ── Sticky nav ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: var(--nav-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+        nav .nav-inner {
+            max-width: 740px;
+            margin: 0 auto;
+            padding: 0.6rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav .nav-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text);
+            text-decoration: none;
+        }
+        nav .nav-name:hover { text-decoration: none; }
+        nav .nav-links { display: flex; gap: 1.2rem; }
+        nav .nav-links a {
+            font-size: 0.82rem;
+            color: var(--muted);
+            text-decoration: none;
+        }
+        nav .nav-links a:hover { color: var(--accent); text-decoration: none; }
 
         /* ── Hero ── */
         header { margin-bottom: 3.5rem; }
@@ -101,19 +139,18 @@
             letter-spacing: 0.06em;
             color: var(--muted);
             margin-bottom: 0.4rem;
+            margin-top: 1.5rem;
             font-weight: 600;
         }
 
-        .architecture {
-            background: var(--code-bg);
-            border-radius: 6px;
-            padding: 1rem;
-            overflow-x: auto;
-            font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace;
-            font-size: 0.72rem;
-            line-height: 1.6;
+        /* ── Architecture SVG ── */
+        .architecture-diagram {
             margin-bottom: 1.5rem;
-            white-space: pre;
+            padding: 1rem 0;
+        }
+        .architecture-diagram svg {
+            width: 100%;
+            height: auto;
         }
 
         /* ── Tables ── */
@@ -141,8 +178,9 @@
         /* ── Lessons ── */
         .lessons {
             background: var(--code-bg);
-            border-radius: 6px;
-            padding: 1.2rem;
+            border-left: 3px solid var(--accent);
+            border-radius: 0 6px 6px 0;
+            padding: 1.2rem 1.2rem 1.2rem 1.4rem;
             margin-bottom: 1.5rem;
             font-size: 0.9rem;
             line-height: 1.7;
@@ -163,7 +201,7 @@
         .project-links {
             display: flex;
             gap: 0.8rem;
-            margin-top: 1.2rem;
+            margin-top: 1.5rem;
             flex-wrap: wrap;
         }
         .project-links a {
@@ -176,7 +214,7 @@
         .project-links a:hover { background: var(--accent); color: #fff; text-decoration: none; }
 
         /* ── Skills ── */
-        .skills-group { margin-bottom: 1rem; }
+        .skills-group { margin-bottom: 1.2rem; }
         .skills-group-label {
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -206,15 +244,29 @@
             color: var(--muted);
             font-size: 0.85rem;
         }
+
+        html { scroll-behavior: smooth; }
     </style>
 </head>
 <body>
+    <nav>
+        <div class="nav-inner">
+            <a class="nav-name" href="#">Ryan Guai</a>
+            <div class="nav-links">
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
     <header>
         <h1>Ryan Guai</h1>
         <p class="tagline">Applied AI/ML Engineer</p>
         <p class="bio">
             NUS graduate building production-grade ML systems.
             Focused on retrieval, evaluation, and shipping things that work.
+            Looking for applied AI/ML engineering roles.
         </p>
         <div class="header-links">
             <a class="cta" href="#projects">View my work</a>
@@ -236,13 +288,80 @@
             </p>
 
             <p class="project-section-label">Architecture</p>
-            <div class="architecture">arXiv API ──▶ PDF Parser ──▶ Section Chunker ──▶ BGE-small ──▶ ChromaDB
-               (500 papers)   (PyMuPDF)      (by section)      (384-dim)     (28K chunks)
+            <div class="architecture-diagram">
+                <svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Ingestion pipeline -->
+                    <rect x="10" y="20" width="100" height="44" rx="6" fill="var(--code-bg)" stroke="var(--border)"/>
+                    <text x="60" y="38" text-anchor="middle" font-size="11" font-weight="600" fill="var(--text)">arXiv API</text>
+                    <text x="60" y="53" text-anchor="middle" font-size="9" fill="var(--muted)">500 papers</text>
 
-  Question ──▶ Retriever ──▶ Generator ──▶ Cited Answer
-               │                            ├─ Paper title + arXiv ID
-               ├─ Vector: cosine sim        ├─ Section reference
-               └─ Hybrid: BM25 + RRF       └─ "I don't know" path</div>
+                    <line x1="110" y1="42" x2="140" y2="42" stroke="var(--muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+                    <rect x="140" y="20" width="100" height="44" rx="6" fill="var(--code-bg)" stroke="var(--border)"/>
+                    <text x="190" y="38" text-anchor="middle" font-size="11" font-weight="600" fill="var(--text)">PDF Parser</text>
+                    <text x="190" y="53" text-anchor="middle" font-size="9" fill="var(--muted)">PyMuPDF</text>
+
+                    <line x1="240" y1="42" x2="270" y2="42" stroke="var(--muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+                    <rect x="270" y="20" width="120" height="44" rx="6" fill="var(--code-bg)" stroke="var(--border)"/>
+                    <text x="330" y="38" text-anchor="middle" font-size="11" font-weight="600" fill="var(--text)">Section Chunker</text>
+                    <text x="330" y="53" text-anchor="middle" font-size="9" fill="var(--muted)">by section + overlap</text>
+
+                    <line x1="390" y1="42" x2="420" y2="42" stroke="var(--muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+                    <rect x="420" y="20" width="100" height="44" rx="6" fill="var(--code-bg)" stroke="var(--border)"/>
+                    <text x="470" y="38" text-anchor="middle" font-size="11" font-weight="600" fill="var(--text)">BGE-small</text>
+                    <text x="470" y="53" text-anchor="middle" font-size="9" fill="var(--muted)">384-dim embeddings</text>
+
+                    <line x1="520" y1="42" x2="550" y2="42" stroke="var(--muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+                    <rect x="550" y="20" width="110" height="44" rx="6" fill="var(--tag-bg)" stroke="var(--accent)" stroke-width="1.5"/>
+                    <text x="605" y="38" text-anchor="middle" font-size="11" font-weight="600" fill="var(--accent)">ChromaDB</text>
+                    <text x="605" y="53" text-anchor="middle" font-size="9" fill="var(--muted)">28K chunks</text>
+
+                    <!-- Query pipeline -->
+                    <rect x="10" y="120" width="100" height="44" rx="6" fill="var(--code-bg)" stroke="var(--border)"/>
+                    <text x="60" y="138" text-anchor="middle" font-size="11" font-weight="600" fill="var(--text)">Question</text>
+                    <text x="60" y="153" text-anchor="middle" font-size="9" fill="var(--muted)">user query</text>
+
+                    <line x1="110" y1="142" x2="140" y2="142" stroke="var(--muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+                    <rect x="140" y="110" width="160" height="64" rx="6" fill="var(--code-bg)" stroke="var(--border)"/>
+                    <text x="220" y="132" text-anchor="middle" font-size="11" font-weight="600" fill="var(--text)">Retriever</text>
+                    <text x="220" y="148" text-anchor="middle" font-size="9" fill="var(--muted)">Vector: cosine similarity</text>
+                    <text x="220" y="163" text-anchor="middle" font-size="9" fill="var(--muted)">Hybrid: BM25 + Vector + RRF</text>
+
+                    <!-- Line from ChromaDB down to Retriever -->
+                    <line x1="605" y1="64" x2="605" y2="90" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="4"/>
+                    <line x1="605" y1="90" x2="300" y2="90" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="4"/>
+                    <line x1="300" y1="90" x2="300" y2="110" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#arrow)"/>
+
+                    <line x1="300" y1="142" x2="360" y2="142" stroke="var(--muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+                    <rect x="360" y="120" width="120" height="44" rx="6" fill="var(--code-bg)" stroke="var(--border)"/>
+                    <text x="420" y="138" text-anchor="middle" font-size="11" font-weight="600" fill="var(--text)">Generator</text>
+                    <text x="420" y="153" text-anchor="middle" font-size="9" fill="var(--muted)">Gemini Flash</text>
+
+                    <line x1="480" y1="142" x2="510" y2="142" stroke="var(--muted)" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+                    <rect x="510" y="110" width="150" height="64" rx="6" fill="var(--tag-bg)" stroke="var(--accent)" stroke-width="1.5"/>
+                    <text x="585" y="132" text-anchor="middle" font-size="11" font-weight="600" fill="var(--accent)">Cited Answer</text>
+                    <text x="585" y="148" text-anchor="middle" font-size="9" fill="var(--muted)">Paper title + arXiv ID</text>
+                    <text x="585" y="163" text-anchor="middle" font-size="9" fill="var(--muted)">"I don't know" path</text>
+
+                    <!-- Key -->
+                    <text x="10" y="215" font-size="9" fill="var(--muted)" font-weight="600">KEY DESIGN DECISIONS</text>
+                    <text x="10" y="232" font-size="9" fill="var(--muted)">Section-aware chunking (not fixed-window) preserves semantic coherence.</text>
+                    <text x="10" y="248" font-size="9" fill="var(--muted)">Hybrid retrieval adds keyword matching for exact terms (LoRA, FlashAttention) that vector search misses.</text>
+
+                    <!-- Arrow marker -->
+                    <defs>
+                        <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                            <path d="M0,0 L8,3 L0,6" fill="none" stroke="var(--muted)" stroke-width="1.2"/>
+                        </marker>
+                    </defs>
+                </svg>
+            </div>
 
             <p class="project-section-label">Retrieval Comparison — Vector vs Hybrid</p>
             <div class="table-wrap">
@@ -332,6 +451,16 @@
                 <li>PyMuPDF</li>
                 <li>Streamlit</li>
                 <li>structlog</li>
+            </ul>
+        </div>
+
+        <div class="skills-group">
+            <p class="skills-group-label">Practices</p>
+            <ul class="skills-list">
+                <li>Structured Logging</li>
+                <li>Cost/Latency Tracking</li>
+                <li>Reproducible Evaluation</li>
+                <li>Load Testing</li>
             </ul>
         </div>
     </section>
