@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ryan Guai — AI/ML Engineer</title>
+    <style>
+        :root {
+            --bg: #fafafa;
+            --text: #1a1a1a;
+            --muted: #555;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --border: #e5e5e5;
+            --card-bg: #fff;
+            --code-bg: #f5f5f5;
+            --tag-bg: #eef2ff;
+            --tag-text: #3b52a8;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0f0f0f;
+                --text: #e5e5e5;
+                --muted: #999;
+                --accent: #60a5fa;
+                --accent-hover: #93bbfd;
+                --border: #2a2a2a;
+                --card-bg: #181818;
+                --code-bg: #1e1e1e;
+                --tag-bg: #1e293b;
+                --tag-text: #93c5fd;
+            }
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            max-width: 740px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 2rem;
+        }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { color: var(--accent-hover); text-decoration: underline; }
+
+        /* ── Hero ── */
+        header { margin-bottom: 3.5rem; }
+        header h1 { font-size: 2rem; margin-bottom: 0.25rem; letter-spacing: -0.02em; }
+        .tagline { color: var(--muted); font-size: 1.05rem; margin-bottom: 0.6rem; }
+        .bio { color: var(--muted); font-size: 0.92rem; margin-bottom: 1rem; max-width: 560px; }
+        .header-links { display: flex; gap: 1.2rem; flex-wrap: wrap; align-items: center; }
+        .header-links a { font-size: 0.9rem; }
+        .cta {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding: 0.45rem 1rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .cta:hover { background: var(--accent-hover); text-decoration: none; color: #fff; }
+
+        /* ── Sections ── */
+        section { margin-bottom: 3.5rem; }
+        section h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid var(--border);
+            letter-spacing: -0.01em;
+        }
+
+        /* ── Project card ── */
+        .project {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+        .project h3 { font-size: 1.15rem; margin-bottom: 0.6rem; }
+        .project > p { margin-bottom: 1.2rem; font-size: 0.95rem; }
+
+        .project-section-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--muted);
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+        }
+
+        .architecture {
+            background: var(--code-bg);
+            border-radius: 6px;
+            padding: 1rem;
+            overflow-x: auto;
+            font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace;
+            font-size: 0.72rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            white-space: pre;
+        }
+
+        /* ── Tables ── */
+        .table-wrap { overflow-x: auto; margin-bottom: 1.5rem; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+        th, td {
+            padding: 0.5rem 0.7rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--muted);
+        }
+        .delta-pos { color: #16a34a; font-weight: 500; }
+        .delta-neg { color: #dc2626; font-weight: 500; }
+
+        /* ── Lessons ── */
+        .lessons {
+            background: var(--code-bg);
+            border-radius: 6px;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+        .lessons strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--muted);
+        }
+        .lesson-item { margin-bottom: 0.8rem; }
+        .lesson-item:last-child { margin-bottom: 0; }
+        .lesson-label { font-weight: 600; }
+
+        /* ── Project links ── */
+        .project-links {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .project-links a {
+            padding: 0.45rem 0.9rem;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .project-links a:hover { background: var(--accent); color: #fff; text-decoration: none; }
+
+        /* ── Skills ── */
+        .skills-group { margin-bottom: 1rem; }
+        .skills-group-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--muted);
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            list-style: none;
+        }
+        .skills-list li {
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            padding: 0.25rem 0.65rem;
+            border-radius: 4px;
+            font-size: 0.82rem;
+        }
+
+        /* ── Footer ── */
+        footer {
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ryan Guai</h1>
+        <p class="tagline">Applied AI/ML Engineer</p>
+        <p class="bio">
+            NUS graduate building production-grade ML systems.
+            Focused on retrieval, evaluation, and shipping things that work.
+        </p>
+        <div class="header-links">
+            <a class="cta" href="#projects">View my work</a>
+            <a href="https://github.com/ryanguai">GitHub</a>
+            <a href="https://www.linkedin.com/in/ryan-christopher-guai/">LinkedIn</a>
+            <a href="[INSERT: resume PDF link]">Resume</a>
+        </div>
+    </header>
+
+    <section id="projects">
+        <h2>Projects</h2>
+
+        <div class="project">
+            <h3>AI Research Paper Q&A Agent</h3>
+            <p>
+                A RAG system that answers questions about ~500 recent arXiv papers on
+                retrieval-augmented generation, citing the specific paper and section.
+                Declines to answer when the corpus doesn't support a confident response.
+            </p>
+
+            <p class="project-section-label">Architecture</p>
+            <div class="architecture">arXiv API ──▶ PDF Parser ──▶ Section Chunker ──▶ BGE-small ──▶ ChromaDB
+               (500 papers)   (PyMuPDF)      (by section)      (384-dim)     (28K chunks)
+
+  Question ──▶ Retriever ──▶ Generator ──▶ Cited Answer
+               │                            ├─ Paper title + arXiv ID
+               ├─ Vector: cosine sim        ├─ Section reference
+               └─ Hybrid: BM25 + RRF       └─ "I don't know" path</div>
+
+            <p class="project-section-label">Retrieval Comparison — Vector vs Hybrid</p>
+            <div class="table-wrap">
+                <table>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Vector-Only</th>
+                        <th>Hybrid</th>
+                        <th>Delta</th>
+                    </tr>
+                    <tr>
+                        <td>Judge Score (1-5)</td>
+                        <td>[INSERT]</td>
+                        <td>[INSERT]</td>
+                        <td>[INSERT]</td>
+                    </tr>
+                    <tr>
+                        <td>Retrieval Precision</td>
+                        <td>[INSERT]</td>
+                        <td>[INSERT]</td>
+                        <td>[INSERT]</td>
+                    </tr>
+                    <tr>
+                        <td>Retrieval Recall</td>
+                        <td>[INSERT]</td>
+                        <td>[INSERT]</td>
+                        <td>[INSERT]</td>
+                    </tr>
+                    <tr>
+                        <td>Adversarial Decline Rate</td>
+                        <td>[INSERT]</td>
+                        <td>[INSERT]</td>
+                        <td>[INSERT]</td>
+                    </tr>
+                    <tr>
+                        <td>Avg Latency</td>
+                        <td>[INSERT]</td>
+                        <td>[INSERT]</td>
+                        <td>[INSERT]</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="lessons">
+                <strong>What didn't work and how I fixed it</strong>
+                <div class="lesson-item">
+                    <span class="lesson-label">Infinite loop in chunker.</span>
+                    Section-aware chunking hit 100% CPU on large papers — the sentence
+                    splitter's overlap logic didn't advance when overlap exceeded chunk size.
+                    Fixed with a minimum-advance guard.
+                </div>
+                <div class="lesson-item">
+                    <span class="lesson-label">Vector search lacked diversity.</span>
+                    Top-10 results clustered around one sub-topic (e.g., 3 chunks from the
+                    same paper). Adding BM25 keyword search with Reciprocal Rank Fusion
+                    brought in results from different papers and research angles.
+                </div>
+            </div>
+
+            <div class="project-links">
+                <a href="[INSERT: GitHub repo URL]">GitHub</a>
+                <a href="[INSERT: live demo URL]">Live Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+
+        <div class="skills-group">
+            <p class="skills-group-label">AI / ML</p>
+            <ul class="skills-list">
+                <li>Retrieval-Augmented Generation</li>
+                <li>Vector Search</li>
+                <li>Hybrid Retrieval (BM25 + RRF)</li>
+                <li>Evaluation Design</li>
+                <li>LLM-as-Judge</li>
+            </ul>
+        </div>
+
+        <div class="skills-group">
+            <p class="skills-group-label">Tools & Frameworks</p>
+            <ul class="skills-list">
+                <li>Python</li>
+                <li>ChromaDB</li>
+                <li>Sentence Transformers</li>
+                <li>PyMuPDF</li>
+                <li>Streamlit</li>
+                <li>structlog</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <p>
+            <a href="mailto:e0694442@u.nus.edu">e0694442@u.nus.edu</a> ·
+            <a href="https://github.com/ryanguai">GitHub</a> ·
+            <a href="https://www.linkedin.com/in/ryan-christopher-guai/">LinkedIn</a>
+        </p>
+    </footer>
+</body>
+</html>
