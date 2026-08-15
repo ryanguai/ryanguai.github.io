@@ -552,6 +552,16 @@
                 </div>
             </div>
 
+            <p class="project-section-label">Deep Research Mode (LangGraph Agent)</p>
+            <p style="font-size: 0.9rem; margin-bottom: 1rem;">
+                A self-correcting agent built with LangGraph: decomposes complex questions
+                into sub-questions, retrieves evidence for each, drafts a synthesized answer,
+                verifies each claim against sources, and retries on failure (max 2 attempts).
+                Improved simple-question quality by +1.0 judge score. On complex questions,
+                the strict verifier caused all answers to hit the retry cap — an honest finding
+                about verification calibration being its own hard problem.
+            </p>
+
             <p class="project-section-label">Deployment & CI/CD</p>
             <p style="font-size: 0.9rem; margin-bottom: 1rem;">
                 Containerized with Docker. GitHub Actions CI runs linting, builds the image,
