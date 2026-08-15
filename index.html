@@ -512,8 +512,32 @@
                 </table>
             </div>
 
+            <p class="project-section-label">Prompt Injection Security — Before vs After</p>
+            <div class="table-wrap">
+                <table>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Baseline</th>
+                        <th>With Mitigation</th>
+                        <th>Delta</th>
+                    </tr>
+                    <tr>
+                        <td>Injection Resistance Rate</td>
+                        <td>75%</td>
+                        <td>100%</td>
+                        <td class="delta-pos">+25%</td>
+                    </tr>
+                </table>
+            </div>
+
             <div class="lessons">
                 <strong>What didn't work and how I fixed it</strong>
+                <div class="lesson-item">
+                    <span class="lesson-label">Prompt injection vulnerability.</span>
+                    Malicious instructions embedded in retrieved chunks could leak the system
+                    prompt, inject URLs, or drop citation behavior. Fixed with a 4-line
+                    instruction-hierarchy statement: resistance went from 75% to 100%.
+                </div>
                 <div class="lesson-item">
                     <span class="lesson-label">Infinite loop in chunker.</span>
                     Section-aware chunking hit 100% CPU on large papers — the sentence
